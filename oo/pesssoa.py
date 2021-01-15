@@ -1,12 +1,23 @@
 class Pessoa:
+    def __init__(self, *filhos, nome=None, idade=0):
+        self.nome = nome
+        self.filhos = list(filhos)
+
+
     def cumprimentar(self):
         return f"ola {id(self)}"
 
-if __name__ == '__main__':
-    p = Pessoa()
-    print(Pessoa.cumprimentar(p))    #vc pode chamar o metodo apartir da classe, passando um objeto
-                                     # dessa classe como parametro self
 
-    print(p.cumprimentar())          #quando vc chama o metodo apartir do objeto vc nao precisa passar o
-                                     # objeto como parametro(self), ele sera passado implicitamente
-    print(id(p))
+
+if __name__ == '__main__':
+    pedro = Pessoa(nome="Pedro")
+    henrique = Pessoa(pedro, nome="Henrique")
+    print(henrique.filhos)
+    for filhos in henrique.filhos:
+        print(filhos.nome)
+
+    print(Pessoa.cumprimentar(pedro))
+    print(id(pedro))
+    print(pedro.cumprimentar())
+    print(pedro.nome)
+    print(pedro.cumprimentar)
